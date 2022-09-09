@@ -1,1 +1,1 @@
-#NordVPN cli to GUI using Qt, initial version
+# NordVPN cli to GUI using Qt, initial version

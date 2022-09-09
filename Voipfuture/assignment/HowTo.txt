@@ -1,0 +1,13 @@
+
+
+Usage
+======
+cmake -S .
+make
+
+first argument is pcap file
+ second is how many 
+ threads that you want, third is max packet size
+./capstats data/sip_call_rtp_g711.pcap 3 10000
+
+

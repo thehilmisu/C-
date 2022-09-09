@@ -1,0 +1,3 @@
+repository='https://github.com/the-tcpdump-group/libpcap.git'
+module=''
+tag='origin'

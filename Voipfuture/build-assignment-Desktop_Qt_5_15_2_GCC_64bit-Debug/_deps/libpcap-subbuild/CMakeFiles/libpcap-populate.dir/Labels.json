@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/_deps/libpcap-subbuild/CMakeFiles/libpcap-populate"
+		},
+		{
+			"file" : "/home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/_deps/libpcap-subbuild/CMakeFiles/libpcap-populate.rule"
+		},
+		{
+			"file" : "/home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/_deps/libpcap-subbuild/CMakeFiles/libpcap-populate-complete.rule"
+		},
+		{
+			"file" : "/home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/_deps/libpcap-subbuild/libpcap-populate-prefix/src/libpcap-populate-stamp/libpcap-populate-install.rule"
+		},
+		{
+			"file" : "/home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/_deps/libpcap-subbuild/libpcap-populate-prefix/src/libpcap-populate-stamp/libpcap-populate-mkdir.rule"
+		},
+		{
+			"file" : "/home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/_deps/libpcap-subbuild/libpcap-populate-prefix/src/libpcap-populate-stamp/libpcap-populate-download.rule"
+		},
+		{
+			"file" : "/home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/_deps/libpcap-subbuild/libpcap-populate-prefix/src/libpcap-populate-stamp/libpcap-populate-update.rule"
+		},
+		{
+			"file" : "/home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/_deps/libpcap-subbuild/libpcap-populate-prefix/src/libpcap-populate-stamp/libpcap-populate-patch.rule"
+		},
+		{
+			"file" : "/home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/_deps/libpcap-subbuild/libpcap-populate-prefix/src/libpcap-populate-stamp/libpcap-populate-configure.rule"
+		},
+		{
+			"file" : "/home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/_deps/libpcap-subbuild/libpcap-populate-prefix/src/libpcap-populate-stamp/libpcap-populate-build.rule"
+		},
+		{
+			"file" : "/home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/_deps/libpcap-subbuild/libpcap-populate-prefix/src/libpcap-populate-stamp/libpcap-populate-test.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"libpcap-populate"
+		],
+		"name" : "libpcap-populate"
+	}
+}

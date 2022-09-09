@@ -1,0 +1,437 @@
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/thehilmisu/Qt/Tools/Ninja/ninja cmTC_58922 && [1/2] Building C object CMakeFiles/cmTC_58922.dir/src.c.o
+[2/2] Linking C executable cmTC_58922
+FAILED: cmTC_58922 
+: && /usr/bin/gcc  -rdynamic CMakeFiles/cmTC_58922.dir/src.c.o -o cmTC_58922   && :
+/usr/bin/ld: CMakeFiles/cmTC_58922.dir/src.c.o: in function `main':
+src.c:(.text+0x46): undefined reference to `pthread_create'
+/usr/bin/ld: src.c:(.text+0x52): undefined reference to `pthread_detach'
+/usr/bin/ld: src.c:(.text+0x5e): undefined reference to `pthread_cancel'
+/usr/bin/ld: src.c:(.text+0x6f): undefined reference to `pthread_join'
+collect2: error: ld returned 1 exit status
+ninja: build stopped: subcommand failed.
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/thehilmisu/Qt/Tools/Ninja/ninja cmTC_77adc && [1/2] Building C object CMakeFiles/cmTC_77adc.dir/CheckFunctionExists.c.o
+[2/2] Linking C executable cmTC_77adc
+FAILED: cmTC_77adc 
+: && /usr/bin/gcc -DCHECK_FUNCTION_EXISTS=pthread_create -rdynamic CMakeFiles/cmTC_77adc.dir/CheckFunctionExists.c.o -o cmTC_77adc  -lpthreads && :
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+ninja: build stopped: subcommand failed.
+
+
+
+Determining if the include file bitypes.h exists failed with the following output:
+Change Dir: /home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/thehilmisu/Qt/Tools/Ninja/ninja cmTC_d0e35 && [1/2] Building C object CMakeFiles/cmTC_d0e35.dir/CheckIncludeFile.c.o
+FAILED: CMakeFiles/cmTC_d0e35.dir/CheckIncludeFile.c.o 
+/usr/bin/gcc    -o CMakeFiles/cmTC_d0e35.dir/CheckIncludeFile.c.o -c CheckIncludeFile.c
+CheckIncludeFile.c:1:10: fatal error: bitypes.h: No such file or directory
+    1 | #include <bitypes.h>
+      |          ^~~~~~~~~~~
+compilation terminated.
+ninja: build stopped: subcommand failed.
+
+
+
+Determining if the include file sys/ioccom.h exists failed with the following output:
+Change Dir: /home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/thehilmisu/Qt/Tools/Ninja/ninja cmTC_f8d17 && [1/2] Building C object CMakeFiles/cmTC_f8d17.dir/CheckIncludeFile.c.o
+FAILED: CMakeFiles/cmTC_f8d17.dir/CheckIncludeFile.c.o 
+/usr/bin/gcc    -o CMakeFiles/cmTC_f8d17.dir/CheckIncludeFile.c.o -c CheckIncludeFile.c
+CheckIncludeFile.c:1:10: fatal error: sys/ioccom.h: No such file or directory
+    1 | #include <sys/ioccom.h>
+      |          ^~~~~~~~~~~~~~
+compilation terminated.
+ninja: build stopped: subcommand failed.
+
+
+
+Determining if the include file sys/sockio.h exists failed with the following output:
+Change Dir: /home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/thehilmisu/Qt/Tools/Ninja/ninja cmTC_483d7 && [1/2] Building C object CMakeFiles/cmTC_483d7.dir/CheckIncludeFile.c.o
+FAILED: CMakeFiles/cmTC_483d7.dir/CheckIncludeFile.c.o 
+/usr/bin/gcc    -o CMakeFiles/cmTC_483d7.dir/CheckIncludeFile.c.o -c CheckIncludeFile.c
+CheckIncludeFile.c:1:10: fatal error: sys/sockio.h: No such file or directory
+    1 | #include <sys/sockio.h>
+      |          ^~~~~~~~~~~~~~
+compilation terminated.
+ninja: build stopped: subcommand failed.
+
+
+
+Determining if files sys/types.h;sys/socket.h;net/if.h;net/pfvar.h exist failed with the following output:
+Change Dir: /home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/thehilmisu/Qt/Tools/Ninja/ninja cmTC_1285b && [1/2] Building C object CMakeFiles/cmTC_1285b.dir/HAVE_NET_PFVAR_H.c.o
+FAILED: CMakeFiles/cmTC_1285b.dir/HAVE_NET_PFVAR_H.c.o 
+/usr/bin/gcc    -o CMakeFiles/cmTC_1285b.dir/HAVE_NET_PFVAR_H.c.o -c /home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/CMakeFiles/CheckIncludeFiles/HAVE_NET_PFVAR_H.c
+/home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/CMakeFiles/CheckIncludeFiles/HAVE_NET_PFVAR_H.c:5:10: fatal error: net/pfvar.h: No such file or directory
+    5 | #include <net/pfvar.h>
+      |          ^~~~~~~~~~~~~
+compilation terminated.
+ninja: build stopped: subcommand failed.
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <net/if.h>
+#include <net/pfvar.h>
+
+
+int main(void){return 0;}
+
+Determining if the function strlcpy exists failed with the following output:
+Change Dir: /home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/thehilmisu/Qt/Tools/Ninja/ninja cmTC_4f111 && [1/2] Building C object CMakeFiles/cmTC_4f111.dir/CheckFunctionExists.c.o
+[2/2] Linking C executable cmTC_4f111
+FAILED: cmTC_4f111 
+: && /usr/bin/gcc -DCHECK_FUNCTION_EXISTS=strlcpy -rdynamic CMakeFiles/cmTC_4f111.dir/CheckFunctionExists.c.o -o cmTC_4f111   && :
+/usr/bin/ld: CMakeFiles/cmTC_4f111.dir/CheckFunctionExists.c.o: in function `main':
+CheckFunctionExists.c:(.text+0x14): undefined reference to `strlcpy'
+collect2: error: ld returned 1 exit status
+ninja: build stopped: subcommand failed.
+
+
+
+Determining if the function strlcat exists failed with the following output:
+Change Dir: /home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/thehilmisu/Qt/Tools/Ninja/ninja cmTC_534b1 && [1/2] Building C object CMakeFiles/cmTC_534b1.dir/CheckFunctionExists.c.o
+[2/2] Linking C executable cmTC_534b1
+FAILED: cmTC_534b1 
+: && /usr/bin/gcc -DCHECK_FUNCTION_EXISTS=strlcat -rdynamic CMakeFiles/cmTC_534b1.dir/CheckFunctionExists.c.o -o cmTC_534b1   && :
+/usr/bin/ld: CMakeFiles/cmTC_534b1.dir/CheckFunctionExists.c.o: in function `main':
+CheckFunctionExists.c:(.text+0x14): undefined reference to `strlcat'
+collect2: error: ld returned 1 exit status
+ninja: build stopped: subcommand failed.
+
+
+
+Determining if the function putmsg exists failed with the following output:
+Change Dir: /home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/thehilmisu/Qt/Tools/Ninja/ninja cmTC_cc7e7 && [1/2] Building C object CMakeFiles/cmTC_cc7e7.dir/CheckFunctionExists.c.o
+[2/2] Linking C executable cmTC_cc7e7
+FAILED: cmTC_cc7e7 
+: && /usr/bin/gcc -DCHECK_FUNCTION_EXISTS=putmsg -rdynamic CMakeFiles/cmTC_cc7e7.dir/CheckFunctionExists.c.o -o cmTC_cc7e7   && :
+/usr/bin/ld: CMakeFiles/cmTC_cc7e7.dir/CheckFunctionExists.c.o: in function `main':
+CheckFunctionExists.c:(.text+0x14): undefined reference to `putmsg'
+collect2: error: ld returned 1 exit status
+ninja: build stopped: subcommand failed.
+
+
+
+Determining if the function putmsg exists in the str failed with the following output:
+Change Dir: /home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/thehilmisu/Qt/Tools/Ninja/ninja cmTC_b4f12 && [1/2] Building C object CMakeFiles/cmTC_b4f12.dir/CheckFunctionExists.c.o
+[2/2] Linking C executable cmTC_b4f12
+FAILED: cmTC_b4f12 
+: && /usr/bin/gcc -DCHECK_FUNCTION_EXISTS=putmsg -rdynamic CMakeFiles/cmTC_b4f12.dir/CheckFunctionExists.c.o -o cmTC_b4f12  -lstr && :
+/usr/bin/ld: cannot find -lstr
+collect2: error: ld returned 1 exit status
+ninja: build stopped: subcommand failed.
+
+
+
+Performing C SOURCE FILE Test HAVE_STRUCT_SOCKADDR_SA_LEN failed with the following output:
+Change Dir: /home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/thehilmisu/Qt/Tools/Ninja/ninja cmTC_ceff4 && [1/2] Building C object CMakeFiles/cmTC_ceff4.dir/src.c.o
+FAILED: CMakeFiles/cmTC_ceff4.dir/src.c.o 
+/usr/bin/gcc -DHAVE_STRUCT_SOCKADDR_SA_LEN   -o CMakeFiles/cmTC_ceff4.dir/src.c.o -c src.c
+src.c: In function ‘main’:
+src.c:6:38: error: ‘struct sockaddr’ has no member named ‘sa_len’
+    6 |   (void)sizeof(((struct sockaddr *)0)->sa_len);
+      |                                      ^~
+ninja: build stopped: subcommand failed.
+
+
+Source file was:
+
+#include <sys/socket.h>
+
+int main()
+{
+  (void)sizeof(((struct sockaddr *)0)->sa_len);
+  return 0;
+}
+
+Determining if the ether_hostton exist failed with the following output:
+Change Dir: /home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/thehilmisu/Qt/Tools/Ninja/ninja cmTC_974c8 && [1/2] Building C object CMakeFiles/cmTC_974c8.dir/CheckSymbolExists.c.o
+FAILED: CMakeFiles/cmTC_974c8.dir/CheckSymbolExists.c.o 
+/usr/bin/gcc    -o CMakeFiles/cmTC_974c8.dir/CheckSymbolExists.c.o -c CheckSymbolExists.c
+CheckSymbolExists.c: In function ‘main’:
+CheckSymbolExists.c:8:19: error: ‘ether_hostton’ undeclared (first use in this function)
+    8 |   return ((int*)(&ether_hostton))[argc];
+      |                   ^~~~~~~~~~~~~
+CheckSymbolExists.c:8:19: note: each undeclared identifier is reported only once for each function it appears in
+ninja: build stopped: subcommand failed.
+
+
+File /home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <net/ethernet.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef ether_hostton
+  return ((int*)(&ether_hostton))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if files sys/types.h;net/bpf.h exist failed with the following output:
+Change Dir: /home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/thehilmisu/Qt/Tools/Ninja/ninja cmTC_ac7c8 && [1/2] Building C object CMakeFiles/cmTC_ac7c8.dir/HAVE_NET_BPF_H.c.o
+FAILED: CMakeFiles/cmTC_ac7c8.dir/HAVE_NET_BPF_H.c.o 
+/usr/bin/gcc    -o CMakeFiles/cmTC_ac7c8.dir/HAVE_NET_BPF_H.c.o -c /home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/CMakeFiles/CheckIncludeFiles/HAVE_NET_BPF_H.c
+/home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/CMakeFiles/CheckIncludeFiles/HAVE_NET_BPF_H.c:3:10: fatal error: net/bpf.h: No such file or directory
+    3 | #include <net/bpf.h>
+      |          ^~~~~~~~~~~
+compilation terminated.
+ninja: build stopped: subcommand failed.
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <net/bpf.h>
+
+
+int main(void){return 0;}
+
+Determining if the include file net/pfilt.h exists failed with the following output:
+Change Dir: /home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/thehilmisu/Qt/Tools/Ninja/ninja cmTC_e5a48 && [1/2] Building C object CMakeFiles/cmTC_e5a48.dir/CheckIncludeFile.c.o
+FAILED: CMakeFiles/cmTC_e5a48.dir/CheckIncludeFile.c.o 
+/usr/bin/gcc    -o CMakeFiles/cmTC_e5a48.dir/CheckIncludeFile.c.o -c CheckIncludeFile.c
+CheckIncludeFile.c:1:10: fatal error: net/pfilt.h: No such file or directory
+    1 | #include <net/pfilt.h>
+      |          ^~~~~~~~~~~~~
+compilation terminated.
+ninja: build stopped: subcommand failed.
+
+
+
+Determining if the include file net/enet.h exists failed with the following output:
+Change Dir: /home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/thehilmisu/Qt/Tools/Ninja/ninja cmTC_787fd && [1/2] Building C object CMakeFiles/cmTC_787fd.dir/CheckIncludeFile.c.o
+FAILED: CMakeFiles/cmTC_787fd.dir/CheckIncludeFile.c.o 
+/usr/bin/gcc    -o CMakeFiles/cmTC_787fd.dir/CheckIncludeFile.c.o -c CheckIncludeFile.c
+CheckIncludeFile.c:1:10: fatal error: net/enet.h: No such file or directory
+    1 | #include <net/enet.h>
+      |          ^~~~~~~~~~~~
+compilation terminated.
+ninja: build stopped: subcommand failed.
+
+
+
+Determining if the include file net/nit.h exists failed with the following output:
+Change Dir: /home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/thehilmisu/Qt/Tools/Ninja/ninja cmTC_c3a74 && [1/2] Building C object CMakeFiles/cmTC_c3a74.dir/CheckIncludeFile.c.o
+FAILED: CMakeFiles/cmTC_c3a74.dir/CheckIncludeFile.c.o 
+/usr/bin/gcc    -o CMakeFiles/cmTC_c3a74.dir/CheckIncludeFile.c.o -c CheckIncludeFile.c
+CheckIncludeFile.c:1:10: fatal error: net/nit.h: No such file or directory
+    1 | #include <net/nit.h>
+      |          ^~~~~~~~~~~
+compilation terminated.
+ninja: build stopped: subcommand failed.
+
+
+
+Determining if the include file sys/net/nit.h exists failed with the following output:
+Change Dir: /home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/thehilmisu/Qt/Tools/Ninja/ninja cmTC_aed35 && [1/2] Building C object CMakeFiles/cmTC_aed35.dir/CheckIncludeFile.c.o
+FAILED: CMakeFiles/cmTC_aed35.dir/CheckIncludeFile.c.o 
+/usr/bin/gcc    -o CMakeFiles/cmTC_aed35.dir/CheckIncludeFile.c.o -c CheckIncludeFile.c
+CheckIncludeFile.c:1:10: fatal error: sys/net/nit.h: No such file or directory
+    1 | #include <sys/net/nit.h>
+      |          ^~~~~~~~~~~~~~~
+compilation terminated.
+ninja: build stopped: subcommand failed.
+
+
+
+Determining if the include file net/raw.h exists failed with the following output:
+Change Dir: /home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/thehilmisu/Qt/Tools/Ninja/ninja cmTC_5bf23 && [1/2] Building C object CMakeFiles/cmTC_5bf23.dir/CheckIncludeFile.c.o
+FAILED: CMakeFiles/cmTC_5bf23.dir/CheckIncludeFile.c.o 
+/usr/bin/gcc    -o CMakeFiles/cmTC_5bf23.dir/CheckIncludeFile.c.o -c CheckIncludeFile.c
+CheckIncludeFile.c:1:10: fatal error: net/raw.h: No such file or directory
+    1 | #include <net/raw.h>
+      |          ^~~~~~~~~~~
+compilation terminated.
+ninja: build stopped: subcommand failed.
+
+
+
+Determining if the include file sys/dlpi.h exists failed with the following output:
+Change Dir: /home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/thehilmisu/Qt/Tools/Ninja/ninja cmTC_9abd4 && [1/2] Building C object CMakeFiles/cmTC_9abd4.dir/CheckIncludeFile.c.o
+FAILED: CMakeFiles/cmTC_9abd4.dir/CheckIncludeFile.c.o 
+/usr/bin/gcc    -o CMakeFiles/cmTC_9abd4.dir/CheckIncludeFile.c.o -c CheckIncludeFile.c
+CheckIncludeFile.c:1:10: fatal error: sys/dlpi.h: No such file or directory
+    1 | #include <sys/dlpi.h>
+      |          ^~~~~~~~~~~~
+compilation terminated.
+ninja: build stopped: subcommand failed.
+
+
+
+Determining if the include file config/HaikuConfig.h exists failed with the following output:
+Change Dir: /home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/thehilmisu/Qt/Tools/Ninja/ninja cmTC_e4b2b && [1/2] Building C object CMakeFiles/cmTC_e4b2b.dir/CheckIncludeFile.c.o
+FAILED: CMakeFiles/cmTC_e4b2b.dir/CheckIncludeFile.c.o 
+/usr/bin/gcc    -o CMakeFiles/cmTC_e4b2b.dir/CheckIncludeFile.c.o -c CheckIncludeFile.c
+CheckIncludeFile.c:1:10: fatal error: config/HaikuConfig.h: No such file or directory
+    1 | #include <config/HaikuConfig.h>
+      |          ^~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+ninja: build stopped: subcommand failed.
+
+
+
+Determining if the function nl_socket_alloc exists failed with the following output:
+Change Dir: /home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/thehilmisu/Qt/Tools/Ninja/ninja cmTC_6a6b8 && [1/2] Building C object CMakeFiles/cmTC_6a6b8.dir/CheckFunctionExists.c.o
+[2/2] Linking C executable cmTC_6a6b8
+FAILED: cmTC_6a6b8 
+: && /usr/bin/gcc -DCHECK_FUNCTION_EXISTS=nl_socket_alloc -rdynamic CMakeFiles/cmTC_6a6b8.dir/CheckFunctionExists.c.o -o cmTC_6a6b8  -lnl-3 && :
+/usr/bin/ld: cannot find -lnl-3
+collect2: error: ld returned 1 exit status
+ninja: build stopped: subcommand failed.
+
+
+
+Determining if files linux/compiler.h exist failed with the following output:
+Change Dir: /home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/thehilmisu/Qt/Tools/Ninja/ninja cmTC_28e78 && [1/2] Building C object CMakeFiles/cmTC_28e78.dir/HAVE_LINUX_COMPILER_H.c.o
+FAILED: CMakeFiles/cmTC_28e78.dir/HAVE_LINUX_COMPILER_H.c.o 
+/usr/bin/gcc    -o CMakeFiles/cmTC_28e78.dir/HAVE_LINUX_COMPILER_H.c.o -c /home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/CMakeFiles/CheckIncludeFiles/HAVE_LINUX_COMPILER_H.c
+/home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/CMakeFiles/CheckIncludeFiles/HAVE_LINUX_COMPILER_H.c:2:10: fatal error: linux/compiler.h: No such file or directory
+    2 | #include <linux/compiler.h>
+      |          ^~~~~~~~~~~~~~~~~~
+compilation terminated.
+ninja: build stopped: subcommand failed.
+
+
+Source:
+/* */
+#include <linux/compiler.h>
+
+
+int main(void){return 0;}
+
+Performing C SOURCE FILE Test PCAP_SUPPORT_NETMAP failed with the following output:
+Change Dir: /home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/thehilmisu/Qt/Tools/Ninja/ninja cmTC_4c3ba && [1/2] Building C object CMakeFiles/cmTC_4c3ba.dir/src.c.o
+FAILED: CMakeFiles/cmTC_4c3ba.dir/src.c.o 
+/usr/bin/gcc -DPCAP_SUPPORT_NETMAP   -o CMakeFiles/cmTC_4c3ba.dir/src.c.o -c src.c
+src.c:2:10: fatal error: net/netmap_user.h: No such file or directory
+    2 | #include <net/netmap_user.h>
+      |          ^~~~~~~~~~~~~~~~~~~
+compilation terminated.
+ninja: build stopped: subcommand failed.
+
+
+Source file was:
+#define NETMAP_WITH_LIBS
+#include <net/netmap_user.h>
+
+int
+main(void)
+{
+    return 0;
+}
+
+Determining if the include file bluetooth/bluetooth.h exists failed with the following output:
+Change Dir: /home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/thehilmisu/Qt/Tools/Ninja/ninja cmTC_9ce2a && [1/2] Building C object CMakeFiles/cmTC_9ce2a.dir/CheckIncludeFile.c.o
+FAILED: CMakeFiles/cmTC_9ce2a.dir/CheckIncludeFile.c.o 
+/usr/bin/gcc    -o CMakeFiles/cmTC_9ce2a.dir/CheckIncludeFile.c.o -c CheckIncludeFile.c
+CheckIncludeFile.c:1:10: fatal error: bluetooth/bluetooth.h: No such file or directory
+    1 | #include <bluetooth/bluetooth.h>
+      |          ^~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+ninja: build stopped: subcommand failed.
+
+
+
+Determining if the function ibv_get_device_list exists in the ibverbs failed with the following output:
+Change Dir: /home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/thehilmisu/Qt/Tools/Ninja/ninja cmTC_0748d && [1/2] Building C object CMakeFiles/cmTC_0748d.dir/CheckFunctionExists.c.o
+[2/2] Linking C executable cmTC_0748d
+FAILED: cmTC_0748d 
+: && /usr/bin/gcc -DCHECK_FUNCTION_EXISTS=ibv_get_device_list -rdynamic CMakeFiles/cmTC_0748d.dir/CheckFunctionExists.c.o -o cmTC_0748d  -libverbs && :
+/usr/bin/ld: cannot find -libverbs
+collect2: error: ld returned 1 exit status
+ninja: build stopped: subcommand failed.
+
+
+
+Determining if the include file msg.h exists failed with the following output:
+Change Dir: /home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/thehilmisu/Qt/Tools/Ninja/ninja cmTC_a1f5c && [1/2] Building C object CMakeFiles/cmTC_a1f5c.dir/CheckIncludeFile.c.o
+FAILED: CMakeFiles/cmTC_a1f5c.dir/CheckIncludeFile.c.o 
+/usr/bin/gcc  -I/home/thehilmisu/Desktop/Workdir/Voipfuture/build-assignment-Desktop_Qt_5_15_2_GCC_64bit-Debug/_deps/libpcap-src/../septel/INC  -o CMakeFiles/cmTC_a1f5c.dir/CheckIncludeFile.c.o -c CheckIncludeFile.c
+CheckIncludeFile.c:1:10: fatal error: msg.h: No such file or directory
+    1 | #include <msg.h>
+      |          ^~~~~~~
+compilation terminated.
+ninja: build stopped: subcommand failed.
+
+
+

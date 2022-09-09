@@ -1,0 +1,5 @@
+/home/hilmisu/Desktop/Workdir/C++/Qt/NordVPN/build-NordVPN-Desktop-Debug/CMakeFiles/edit_cache.dir
+/home/hilmisu/Desktop/Workdir/C++/Qt/NordVPN/build-NordVPN-Desktop-Debug/CMakeFiles/rebuild_cache.dir
+/home/hilmisu/Desktop/Workdir/C++/Qt/NordVPN/build-NordVPN-Desktop-Debug/CMakeFiles/NordVPN.dir
+/home/hilmisu/Desktop/Workdir/C++/Qt/NordVPN/build-NordVPN-Desktop-Debug/CMakeFiles/NordVPN_autogen_timestamp_deps.dir
+/home/hilmisu/Desktop/Workdir/C++/Qt/NordVPN/build-NordVPN-Desktop-Debug/CMakeFiles/NordVPN_autogen.dir

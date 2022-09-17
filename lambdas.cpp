@@ -15,6 +15,7 @@ public:
     {
         cout << "Destroyed Entity" << endl;
     }
+    
 
 };
 
@@ -35,6 +36,7 @@ int main(){
     auto it = std::find_if(values.begin(), values.end(), [](int value){ return value > 3; });
 
     std::cout << *it << std::endl;
+    
 
     // simple lambda function to roll a dice
     auto roll = [](){ return rand() % 6 + 1; };

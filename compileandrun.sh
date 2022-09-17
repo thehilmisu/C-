@@ -6,6 +6,7 @@
 #RESULT=$( g++ -o exe $1 )
 
 #RESULT=$( g++ -lpthread -o exe $1)
+RESULT=$( clang++ -std=c++11 -stdlib=libc++ -Weverything $1 )
 
 sleep 1
 

@@ -5,7 +5,7 @@
 #g++ gmockTest.cpp -std=c++11 -lgtest -lgtest_main ++66++6 -pthread -o test
 #RESULT=$( g++ -o exe $1 )
 
-RESULT=$( g++ -lpthread -o exe $1)
+#RESULT=$( g++ -lpthread -o exe $1)
 
 sleep 1
 

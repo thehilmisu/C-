@@ -6,7 +6,8 @@
 #RESULT=$( g++ -o exe $1 )
 
 #RESULT=$( g++ -lpthread -o exe $1)
-RESULT=$( clang++ -std=c++11 -stdlib=libc++ -Weverything $1 )
+#RESULT=$( clang++ -std=c++11 -stdlib=libc++ -Weverything $1 ) #MACOS choice #1 with warnings
+RESULT=$( clang++ -std=c++11 -stdlib=libc++ $1 )
 
 sleep 1
 

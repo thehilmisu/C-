@@ -12,6 +12,6 @@ sleep 1
 
 if [ -z $RESULT ]
 then
-    ./exe
+    ./a.out
 fi
 

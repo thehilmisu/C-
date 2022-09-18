@@ -12,7 +12,7 @@
     
 	#g++ -o YourProgName $1 -L/opt/X11 -lX11 -lGL -lpthread -lpng -lstdc++fs -std=c++17
 
-	c++ -std=c++17 olcExampleProgram.cpp -I/opt/X11/include -L/opt/X11/lib -lX11 -lGL -lpng -o olcExampleProgram -v
+	c++ -std=c++17 olcExampleProgram.cpp -I/opt/X11/include -L/opt/X11/lib -lX11 -lGL -lpng -o olcExampleProgram 
     #vblank_mode=0 ./YourProgName
 
     ./olcExampleProgram

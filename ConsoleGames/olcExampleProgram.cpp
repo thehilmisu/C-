@@ -138,47 +138,55 @@ public:
 		if (speed > 0.0f)
 		{
 			speed -= friction;
+			if (GetKey(olc::Key::A).bHeld || GetKey(olc::Key::D).bHeld)
+			   angle -= friction;
 		}
-		if (speed < 0.0f)
+		else if (speed < 0.0f)
 		{
 			speed += friction;
+			if (GetKey(olc::Key::A).bHeld || GetKey(olc::Key::D).bHeld)
+				angle += friction;
 		}
 		if (abs(speed) < friction)
 		{
 			speed = 0;
+			angle = 0;
 		}
 
 		if (speed != 0)
 		{
 			float flip = speed > 0.0f ? 1.0f : -1.0f;
 
-			//std::cout << angle << "   " << speed << "  " << flip << std::endl;
+			//std::cout << fElapsedTime << "   " << speed << "  " << flip << std::endl;
+			
 
 			if (GetKey(olc::Key::A).bHeld)
 			{
-				angle += 0.03f * flip;
+				angle = 45 * flip;
 			}
 			if (GetKey(olc::Key::D).bHeld)
 			{
-				angle -= 0.03f * flip;
+				angle = -45 * flip;
 			}
 		}
 
-		
-		//createRandomTraffic(fElapsedTime);
+		createRandomTraffic(fElapsedTime);
 
 		// Update the player rectangles position, with its modified velocity
-		vRects[0].pos.x -= sin(angle) * speed ;
-		vRects[0].pos.y -= cos(angle) * speed ;
+		vRects[0].pos.x -= sinf(angle) * speed ;
+		vRects[0].pos.y -= cosf(angle) * speed ;
 
-		std::cout << sinf(angle) * speed << "  #############  " << cosf(angle) * speed  << std::endl;
+		//vRects[0].pos -= {(sin(angle)) * speed, (cos(angle)) * speed};
+
+		//std::cout << sinf(angle) * speed << "  #############  " << cosf(angle) * speed  << std::endl;
 
 		// Draw all rectangles
 		for (const auto &r : vRects)
 			DrawRect(r.pos, r.size, olc::WHITE);
 
 
-		vRects[3].pos.y += speed * fElapsedTime;
+		vRects[3].pos.y += max_speed * fElapsedTime * 5;
+
 
 		return true;
 	}

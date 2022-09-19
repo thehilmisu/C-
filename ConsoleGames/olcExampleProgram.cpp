@@ -1,57 +1,3 @@
-/*
-
-	License (OLC-3)
-	~~~~~~~~~~~~~~~
-
-	Copyright 2018-2020 OneLoneCoder.com
-
-	Redistribution and use in source and binary forms, with or without
-	modification, are permitted provided that the following conditions
-	are met:
-
-	1. Redistributions or derivations of source code must retain the above
-	copyright notice, this list of conditions and the following disclaimer.
-
-	2. Redistributions or derivative works in binary form must reproduce
-	the above copyright notice. This list of conditions and the following
-	disclaimer must be reproduced in the documentation and/or other
-	materials provided with the distribution.
-
-	3. Neither the name of the copyright holder nor the names of its
-	contributors may be used to endorse or promote products derived
-	from this software without specific prior written permission.
-
-	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-	"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-	LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-	A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-	HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-	SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-	LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-	DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-	THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-	(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-	OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-	Relevant Video: https://www.youtube.com/watch?v=8JJ-4JgR7Dg
-
-	Links
-	~~~~~
-	YouTube:	https://www.youtube.com/javidx9
-				https://www.youtube.com/javidx9extra
-	Discord:	https://discord.gg/WhwHUMV
-	Twitter:	https://www.twitter.com/javidx9
-	Twitch:		https://www.twitch.tv/javidx9
-	GitHub:		https://www.github.com/onelonecoder
-	Patreon:	https://www.patreon.com/javidx9
-	Homepage:	https://www.onelonecoder.com
-
-	Community Blog: https://community.onelonecoder.com
-
-	Author
-	~~~~~~
-	David Barr, aka javidx9, �OneLoneCoder 2018, 2019, 2020
-*/
 
 #define OLC_PGE_APPLICATION
 #include "olcPixelGameEngine.h"
@@ -62,7 +8,6 @@ struct rect
 {
 	olc::vf2d pos;
 	olc::vf2d size;
-	olc::vf2d velocity;
 };
 class RectangleCollisions : public olc::PixelGameEngine
 {
@@ -75,6 +20,24 @@ public:
 	std::vector<rect> vRects;
 
 public:
+
+	bool checkcollisiononeway(rect rect1, rect rect2)
+	{
+		if (rect1.pos.x < rect2.pos.x + rect2.size.x &&
+			rect1.pos.x + rect1.size.x > rect2.pos.x &&
+			rect1.pos.y < rect2.pos.y + rect2.size.y &&
+			rect1.size.y + rect1.pos.y > rect2.pos.y)
+		{
+			return true;
+		}
+		return false;
+	}
+
+	bool checkcollisionbothways(rect rectA, rect rectB)
+	{
+		return checkcollisiononeway(rectA, rectB) || checkcollisiononeway(rectB, rectA);
+	}
+
 	float rand_FloatRange(float a, float b)
 	{
 		return ((b - a) * ((float)rand() / RAND_MAX)) + a;
@@ -94,11 +57,45 @@ public:
 			vRects.push_back({{x_value, -50.0f}, {10.0f, 40.0f}});
 	}
 
+	olc::vf2d DrawRotatedRectangle(const olc::vf2d& pos, rect rectangle, const float fAngle)
+	{
+		float x1 = cos(fAngle) * pos.x - sin(fAngle) * pos.y;
+		float y1 = sin(fAngle) * pos.x + cos(fAngle) * pos.y;
+
+		return {x1,y1};
+
+	}
+	olc::vf2d rotate_point(float cx,float cy,float angle)
+	{
+		olc::vf2d p;
+		float s = sin(angle);
+		float c = cos(angle);
+
+		// translate point back to origin:
+		p.x -= cx;
+		p.y -= cy;
+
+		// rotate point
+		float xnew = p.x * c - p.y * s;
+		float ynew = p.x * s + p.y * c;
+
+		// translate point back:
+		p.x = xnew + cx;
+		p.y = ynew + cy;
+		return p;
+	}
+	olc::vf2d rotate_point_new(float cx, float cy, float angle, olc::vf2d p){
+	  olc::vf2d ret(cos(angle) * (p.x - cx) - sin(angle) * (p.y - cy) + cx,
+                  sin(angle) * (p.x - cx) + cos(angle) * (p.y - cy) + cy);
+     return ret;
+	}
+
 	float speed = 0.0f;
 	float max_speed = 3.0f;
 	float acceleration = 0.2f;
 	float friction = 0.05f;
 	float angle = 0.0f;
+	float m_angle = 0.0f;
 
 	bool OnUserCreate() override
 	{
@@ -153,7 +150,7 @@ public:
 			angle = 0;
 		}
 
-		if (speed != 0)
+		if (speed != 0.0f)
 		{
 			float flip = speed > 0.0f ? 1.0f : -1.0f;
 
@@ -168,13 +165,52 @@ public:
 			{
 				angle = -45 * flip;
 			}
+
+		}
+		else if(speed == 0.0f)
+		{
+			
+			
+			if((GetKey(olc::Key::A).bHeld) || (GetKey(olc::Key::D).bHeld))
+			{
+				if (GetKey(olc::Key::A).bHeld)
+				{
+					m_angle += 0.03f;
+				}
+				if (GetKey(olc::Key::D).bHeld)
+				{
+					m_angle += -0.03f;
+				}
+				float cx = vRects[0].pos.x + vRects[0].size.x / 2;
+
+				float cy = vRects[0].pos.y + vRects[0].size.y / 2;
+
+				olc::vf2d newCoordinates =  rotate_point_new(cx,cy,m_angle,vRects[0].pos);
+
+				//vRects[0].pos.x = newCoordinates.x;
+				//vRects[0].pos.y = newCoordinates.y;
+
+				DrawLine(vRects[0].pos,newCoordinates);
+				//DrawLine(x1,y1,x2,y2)
+				// DrawLine(x, y, x+w, y);
+				// DrawLine(x+w, y, x+w, y+h);
+				// DrawLine(x+w, y+h, x, y+h);
+				// DrawLine(x, y+h, x, y);
+
+				//DrawRect(newCoordinates,vRects[0].size);
+
+
+				//std::cout << "###########" << newCoordinates.x << newCoordinates.y << m_angle << std::endl;
+			}
 		}
 
 		createRandomTraffic(fElapsedTime);
 
 		// Update the player rectangles position, with its modified velocity
-		vRects[0].pos.x -= sinf(angle) * speed ;
-		vRects[0].pos.y -= cosf(angle) * speed ;
+		//vRects[0].pos.x -= sinf(angle) * speed ;
+		//vRects[0].pos.y -= cosf(angle) * speed ;
+
+		//std::cout << checkcollisionbothways(vRects[0],vRects[1]) << std::endl;
 
 		//vRects[0].pos -= {(sin(angle)) * speed, (cos(angle)) * speed};
 
@@ -191,6 +227,25 @@ public:
 		return true;
 	}
 };
+
+
+
+//   void DrawRotatedRectangle(const olc::vf2d& pos, rect* rectangle, const float fAngle, const olc::vf2d& center, const olc::vf2d& scale)
+//   {
+//     rect r;
+//     r = rectangle;
+//     r.pos[0] = (olc::vf2d(0.0f, 0.0f) - center) * scale;
+//     r.pos[1] = (olc::vf2d(0.0f, float(r.size.y) - center) * scale;
+//     r.pos[2] = (olc::vf2d(float(r.size.x), float(r.size.y)) - center) * scale;
+//     r.pos[3] = (olc::vf2d(float(r.size.x), 0.0f) - center) * scale;
+//     float c = cos(fAngle), s = sin(fAngle);
+//     for (int i = 0; i < 4; i++)
+//     {
+//       r.pos[i] = pos + olc::vf2d(r.pos[i].x * c - r.pos[i].y * s, r.pos[i].x * s + r.pos[i].y * c);
+//       r.pos[i] = r.pos[i] * 240 * 2.0f - olc::vf2d(1.0f, 1.0f);
+//       r.pos[i].y *= -1.0f;
+//     }
+//   }
 
 int main()
 {

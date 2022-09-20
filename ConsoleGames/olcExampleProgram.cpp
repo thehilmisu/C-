@@ -170,7 +170,6 @@ public:
 		else if(speed == 0.0f)
 		{
 			
-			
 			if((GetKey(olc::Key::A).bHeld) || (GetKey(olc::Key::D).bHeld))
 			{
 				if (GetKey(olc::Key::A).bHeld)
@@ -190,8 +189,38 @@ public:
 				//vRects[0].pos.x = newCoordinates.x;
 				//vRects[0].pos.y = newCoordinates.y;
 
+				olc::vf2d temp = vRects[0].pos;
+
+
+
+				temp.x = temp.x + vRects[0].size.x;
+				temp.y = vRects[0].pos.y;
+
+				olc::vf2d temp2 = newCoordinates;
+				temp2.x = temp2.x + vRects[0].size.x;
+				temp2.y = newCoordinates.y;
+
+				olc::vf2d temp3 = newCoordinates;
+				temp3.x = vRects[0].pos.x;
+				temp3.y = vRects[0].pos.y + vRects[0].size.y;
+
+				olc::vf2d temp4 = newCoordinates;
+				temp4.x = newCoordinates.x;
+				temp4.y = newCoordinates.y+vRects[0].size.y;
+
+				olc::vf2d temp5 = newCoordinates;
+				temp5.x = vRects[0].pos.x + vRects[0].size.x;
+				temp5.y = vRects[0].pos.y + vRects[0].size.y;
+
+				olc::vf2d temp6 = newCoordinates;
+				temp6.x = newCoordinates.x + vRects[0].size.x;
+				temp6.y = newCoordinates.y+vRects[0].size.y;
+
 				DrawLine(vRects[0].pos,newCoordinates);
-				//DrawLine(x1,y1,x2,y2)
+				DrawLine(temp,temp2);
+				DrawLine(temp3,temp4);
+				DrawLine(temp5,temp6);
+
 				// DrawLine(x, y, x+w, y);
 				// DrawLine(x+w, y, x+w, y+h);
 				// DrawLine(x+w, y+h, x, y+h);

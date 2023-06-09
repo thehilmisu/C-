@@ -71,34 +71,35 @@ class Box : public Shape {
 
 vector<int> removeDuplicates(vector<int> v)
 {
-    vector<int> c;
     for(int i=0;i<v.size();i++)
     {
         for(int j=i+1;j<v.size();j++)
         {
             int res = v.at(j) ^ v.at(i);//c.push_back(t.at(j) ^ v.at(i) );
             if(res == 0){
-                //v.erase(v.begin()+i);
-                cout << i << endl;
+                v.erase(v.begin()+i);
             }
-                
         }
     }
-    
-    return c;
+    return v;
 }
 
 int main() {
     
     
   vector<int> v = {0,1,2,2,3,4,4,5};
-  
+
+  cout << "Original vector : ";
+  for(auto i : v)
+    cout << i << ",";
+  cout << endl;
+
   vector<int> test = removeDuplicates(v); 
-  
-//   for(int i : test)
-//   {
-//       cout << i << endl;
-//   }
+ 
+  cout << "Duplicates removed vector :";
+  for(auto i : test)
+    cout << i << ",";
+  cout << endl;
     
   // Box* myBoxArray = new Box[4];
   // delete [] myBoxArray; // Delete array

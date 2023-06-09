@@ -16,7 +16,7 @@ int A::a = 1;
 
 int main() {
   
-  A nesne[100];
+  A a_object[100];
   
   return 0;
 }

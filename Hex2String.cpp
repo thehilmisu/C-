@@ -1,21 +1,26 @@
-// StringOps.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
 
 #include <iostream>
 #include <sstream>
 
 using namespace std;
 
+
+string reverseHexDigits(string hexString)
+{
+  string reversed = "";
+  
+  for(int i=hexString.length()-2;i>=0;i=i-2)
+    reversed.append(hexString.substr(i,2));
+ 
+  return reversed;
+}
+
 string hexToASCII(uint64_t data)
 {
-    std::ostringstream ss;
+    ostringstream ss;
     ss << std::hex << data;
 
-    std::string raw = ss.str();
-    std::string hex = "";
-
-    for(int i=raw.length()-2;i>=0;i=i-2)
-        hex.append(raw.substr(i,2));
+    string hex = reverseHexDigits(ss.str());
 
     // initialize the ASCII code string as empty.
     string ascii = "";

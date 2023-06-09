@@ -1,6 +1,7 @@
 
 #include <iostream>
 #include <vector>
+#include <climits>
 
 using namespace std;
 
@@ -22,12 +23,15 @@ public:
       for (int n = 1; n <= N; n++)
       {
         // opt for the for loop to avoid TLE.
-        // int steps = INT_MAX;
-        // for (int i = 1; i <= n; i++)
-        //  steps = min(steps, max(dp[i - 1], new_dp[n - i]));
-        while (i < n && dp[i - 1] < new_dp[n - i])
-          ++i;
-        new_dp[n] = 1 + max(dp[i - 1], new_dp[n - i]);
+         int steps = INT_MAX;
+         for (int i = 1; i <= n; i++)
+          steps = min(steps, max(dp[i - 1], new_dp[n - i]));
+
+         new_dp[n] = 1 + steps;
+        
+         //while (i < n && dp[i - 1] < new_dp[n - i])
+        //  ++i;
+        //new_dp[n] = 1 + max(dp[i - 1], new_dp[n - i]);
       }
       dp.swap(new_dp);
     }

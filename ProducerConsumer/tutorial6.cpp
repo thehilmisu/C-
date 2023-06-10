@@ -13,7 +13,7 @@ int main(void)
 	Consumer cons1(&pool, "Consumer 1");
 
 	cons0.consume(5);
-	cons1.consume(5);
+	cons1.consume(3);
 	prod.produce(10);	
 
 	prod.join();

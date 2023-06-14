@@ -27,8 +27,6 @@ int main()
 
   //getTotalX(a,b);
   cout << getTotalX(a,b) << endl;
-  
-
 
   return 0;
 }

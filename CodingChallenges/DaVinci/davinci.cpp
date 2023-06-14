@@ -40,7 +40,11 @@ class TestSolution {
   public:
     const std::vector<std::string>& m_data;
     TestSolution(const std::vector<std::string>& data) : m_data(data)
-    {}
+    {
+        std::cout << "data has been received to class : " << std::endl; 
+        for(auto i : data)
+           std::cout << i << std::endl;
+    }
     
     Order splitString(const std::string& str)
     {
@@ -173,15 +177,22 @@ class TestSolution {
     
   };
 
-int main()
-{
+
+int main(int argc, char* argv[]) {
+    std::vector<std::ifstream> files;
+
+    for(int i = 1; i < argc; ++i) 
+        files.emplace_back(argv[i]);
+
     std::vector<std::string> data;
     std::string line;
-    while (std::getline(std::cin, line)) {
+    while (std::getline(files.at(0), line)) {
         data.emplace_back(line);
     }
     
     TestSolution solution{data};
+
+  
     std::cout << "Order counts:\n";
     for (const auto& [symbol, count] : solution.OrderCounts()) {
         std::cout << symbol << " " << count << "\n";
@@ -196,7 +207,10 @@ int main()
     PriceVolume priceVolume = solution.BestSellAtTime("DVAM1", "15:30:00");
     std::cout << priceVolume.price << " " << priceVolume.volume << "\n";
     
+ 
+
     return 0;
 }
+
 
 

@@ -8,10 +8,10 @@
 #RESULT=$( clang++ -std=c++11 -stdlib=libc++ -Weverything $1 ) #MACOS choice #1 with warnings
 #RESULT=$(g++ -std=c++11 -stdlib=libc++ $1)
 
-RESULT=$(g++ -std=c++20 $1 -o davinci)
+RESULT=$(g++ davinci.cpp -std=c++20 $1 -o davinci)
 
 sleep 1
 
-#if [ -z $RESULT ]; then
-#echo input001.txt >>davinci
-#fi
+
+./davinci << input001.txt
+  

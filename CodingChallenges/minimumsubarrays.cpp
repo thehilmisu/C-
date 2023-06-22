@@ -1,7 +1,7 @@
 //https://www.codingninjas.com/codestudio/problems/minimum-subarray-with-required-sum_696460?topList=top-fintech-software-engineer-interview-questions/
 
 
-#include <cmath>
+#include <cmath
 #include <cstdio>
 #include <vector>
 #include <iostream>
@@ -36,7 +36,7 @@ vector<vector<int>> possibleSubArrays(vector<int> arr, int start, int end)
     return subArrays;
 }
 
-vector<vector<int>> minSubarray(vector<int> arr, int n, int x)
+vector<int> minSubarray(vector<int> arr, int n, int x)
 {
   vector<vector<int>> result;
   vector<vector<int>> test = possibleSubArrays(arr, 0 , 0);
@@ -48,10 +48,14 @@ vector<vector<int>> minSubarray(vector<int> arr, int n, int x)
     {
        sum += test.at(i).at(j);
     }
-    if(sum > x)
+    if(sum > x && test.at(i).size() == 2)
       result.push_back(test.at(i));
+
   }
-  return result;
+
+  std::sort(result.begin(), result.end());
+
+  return result.at(0);
 }
 
 
@@ -63,13 +67,10 @@ int main() {
   int x = 5;
 
   //cout << minSubarray(input, n, x) << endl;
-  vector<vector<int>> a = minSubarray(input, 0, 5);
+  vector<int> a = minSubarray(input, 0, 5);
   for(int i=0;i<a.size();i++)
   {
-    for(int j=0;j<a.at(i).size();j++)
-    {
-      cout << a.at(i).at(j) << "," ;
-    }
+    cout << a.at(i) << "," ;
     cout << endl;
   }
 

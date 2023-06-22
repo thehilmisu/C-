@@ -5,20 +5,37 @@
 #include <algorithm>
 using namespace std;
 
-int pickingNumbers(vector<int> a) {
+int pickingNumbers(vector<int> array) {
 
-  vector<int> subArr;
+  std::sort(array.begin(), array.end());
 
-  int ans=0;
+	int result = 0;
+	int count = 1;
+	int subarray_first_element = array[0];
 
-  int pivot = 0;
-  for(int i=1;i<a.size();i++)
-  {
-    ans = max(ans, a.at(i-1) + a.at(i));
-  }
+	for (int i = 1; i < array.size(); ++i)
+	{
+		if (subarray_first_element == array[i] || subarray_first_element + 1 == array[i])
+		{
+			count++;
+		}
+		else
+		{
+			if (count > result)
+			{
+				result = count;
+			}
+			count = 1;
+			subarray_first_element = array[i];
+		}
+	}
 
-
-  return ans;
+	if (count > result)
+	{
+		result = count;
+	}
+	
+  return result;
 }
 
 int main() {

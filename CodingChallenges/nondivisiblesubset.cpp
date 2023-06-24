@@ -41,56 +41,34 @@ std::vector<std::vector<int>> possibleSubArrays(std::vector<int> arr, int start,
     return subArrays;
 }
 
-void sumOfPairs(std::vector<int> arr, int b)
+void sumOfPairs(std::vector<int> arr)
 {
 
-    std::vector<std::pair<int, std::vector<int>>> sumOfPairs; // Vector to store the sums of pairs
+    std::vector<std::pair<int, int>> sumOfPairs; // Vector to store the sums of pairs
 
     std::vector<std::vector<int>> subArrays = possibleSubArrays(arr, 0, 0);
-    int n = subArrays.size(); 
-    //std::cout << n << std::endl;
+    int n = subArrays.size();  
     for (int i = 0; i < n; i++) 
     {
-       int size = subArrays.at(i).size();
-       for(int j=0;j<subArrays.at(i).size();j++)
-          for(int k=1;k<subArrays.at(i).size();k++)
-            if((subArrays.at(i).at(k-1) + subArrays.at(i).at(k)) %  b != 0)
-              sumOfPairs.push_back(std::make_pair(i, subArrays.at(i)));
+       int sum = sumOfElements(subArrays.at(i));
+       sumOfPairs.push_back(std::make_pair(i, sum));
     }
 
-    int max_index = 0;
-    
-    for(int i =0; i< sumOfPairs.size(); i++)
-    {   
-        int s = sumOfPairs.at(i).second.size();
-        max_index = std::max(s, max_index);
+    // Display the sums of pairs
+    for (int i=0;i<sumOfPairs.size(); i++) {
+        std::cout << sumOfPairs.at(i).first  << " ----> " << sumOfPairs.at(i).second << std::endl;
     }
-
-    std::cout << max_index << std::endl;
-
-    std::cout << sumOfPairs.at(max_index).first << " .... "  << std::endl;
-
-    for(auto i : sumOfPairs.at(7).second)
-      std::cout << i << std::endl;
-
-  
+    std::cout << std::endl;
 }
 
-int nonDivisibleSubset(int k, std::vector<int> s, int a)
-{
-    //std::vector<std::vector<int>> subArrays = possibleSubArrays(arr, 0, 0);
 
-    sumOfPairs(s, k);
-
-    return 0;
-
-}
 int nonDivisibleSubset(int k, std::vector<int> s) 
 {
    
   std::set<int> indexes;
   int index = 0;
-  for(auto sArray : possibleSubArrays(s,0,0))
+  std::vector<std::vector<int>> subSets = possibleSubArrays(s,0,0);
+  for(auto sArray : subSets)
   {
     for(int j = 0; j < sArray.size() - 1; j++)
     {
@@ -101,8 +79,11 @@ int nonDivisibleSubset(int k, std::vector<int> s)
     index++;
   }
 
+  int i =0;
   for(auto i : indexes)
-    std::cout << i << std::endl;
+  {
+      subSets.at(i)
+  }
 
 
   return 0;
@@ -117,7 +98,7 @@ int main()
 
   //sumOfPairs(temp);
 
-  std::cout << nonDivisibleSubset(k, temp, 1) << std::endl;
+  std::cout << nonDivisibleSubset(k, temp) << std::endl;
   
 
 

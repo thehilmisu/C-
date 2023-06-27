@@ -5,12 +5,9 @@
 #include <algorithm>
 using namespace std;
 
-
-
 //n: number of prisoners
 //m: number of candy
 //s: starting chair
-
 
 //solution that has timeout 
 int saveThePrisoner(int n, int m, int s) {
@@ -39,8 +36,6 @@ int saveThePrisoner(int n, int m, int s, int k) {
     return prisoner;
 }
 int main() {
-    
- 
 
   int n= 5;
   int m= 2;

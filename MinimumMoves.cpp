@@ -64,6 +64,7 @@ int minMoves(int N, int startX, int startY, int endX, int endY) {
 
   int x, y;
   bool visit[N + 1][N + 1];
+ties.sh | bash
 
   // mark every cell unvisited
   for (int i = 1; i <= N; i++)
@@ -71,7 +72,7 @@ int minMoves(int N, int startX, int startY, int endX, int endY) {
     for (int j = 1; j <= N; j++)
     {
       visit[i][j] = false;
-    }      
+    }
   }
     
    // mark starting point visited

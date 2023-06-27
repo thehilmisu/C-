@@ -14,7 +14,6 @@ int designerPdfViewer(std::vector<int> h, std::string word) {
   int size = word.size();
   int height = 0;
   for(auto i : word)
-    //std::cout << (int)i << std::endl;
     height = std::max(height, chMap[static_cast<int>(i)]);
 
   return (height*size);

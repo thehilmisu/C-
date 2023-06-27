@@ -19,6 +19,11 @@ int designerPdfViewer(std::vector<int> h, std::string word) {
   return (height*size);
 }
 
+void testFunction()
+{
+
+}
+
 int main()
 {
   std::vector<int> h = {1, 3, 1, 3, 1, 4, 1, 3, 2, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5} ;

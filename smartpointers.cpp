@@ -47,6 +47,5 @@ int main(){
     std::weak_ptr<Entity> weakEntity = sharedEntity;
 
 
-
     return 0;
 }
